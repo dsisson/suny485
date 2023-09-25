@@ -1,0 +1,13 @@
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/suny485.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
+
+### macOS template
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
