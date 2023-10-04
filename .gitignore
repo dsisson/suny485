@@ -22,3 +22,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.pytest_cache/
+!/suny485/.idea/
+!/suny485/.idea/vcs.xml
+/suny485/.idea/vcs.xml
