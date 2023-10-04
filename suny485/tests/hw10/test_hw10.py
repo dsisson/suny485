@@ -64,4 +64,5 @@ class TestUnhappyFruits(object):
         assert not is_fruit([])
 
     def test_no_arg(self):
-        assert not is_fruit()
+        with pytest.raises(TypeError):
+            assert not is_fruit()
