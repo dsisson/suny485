@@ -15,25 +15,26 @@ testable things for get_formal_name_original
 
 running these tests (from /Users/derek/dev/suny485/suny485):
 >>> pytest tests/hw11 -k TestOriginalHappyFruits -v
-tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_banana PASSED                                             [ 33%]
-tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_peach PASSED                                              [ 66%]
-tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_lemon PASSED                                              [100%]
+tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_banana PASSED                [ 33%]
+tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_peach PASSED                 [ 66%]
+tests/hw11/test_hw11.py::TestOriginalHappyFruits::test_lemon PASSED                 [100%]
 
 >>> pytest tests/hw11 -k TestOriginalUnhappyFruits -v
-tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_empty_string PASSED                                     [ 20%]
-tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_leading_space PASSED                                    [ 40%]
-tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_trailing_space PASSED                                   [ 60%]
-tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_case_difference PASSED                                  [ 80%]
-tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_non_matching_string PASSED                              [100%]
+tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_empty_string PASSED        [ 20%]
+tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_leading_space PASSED       [ 40%]
+tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_trailing_space PASSED      [ 60%]
+tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_case_difference PASSED     [ 80%]
+tests/hw11/test_hw11.py::TestOriginalUnhappyFruits::test_non_matching_string PASSED [100%]
 
 >>> pytest tests/hw11 -k TestOriginalErrors -v
-tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_int PASSED                                [ 16%]
-tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_list PASSED                               [ 33%]
-tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_dict PASSED                               [ 50%]
-tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_bool PASSED                               [ 66%]
-tests/hw11/test_hw11.py::TestOriginalErrors::test_no_arg PASSED                                          [ 83%]
-tests/hw11/test_hw11.py::TestOriginalErrors::test_multiple_args PASSED                                   [100%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_int PASSED           [ 16%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_list PASSED          [ 33%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_dict PASSED          [ 50%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_not_a_string_bool PASSED          [ 66%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_no_arg PASSED                     [ 83%]
+tests/hw11/test_hw11.py::TestOriginalErrors::test_multiple_args PASSED              [100%]
 """
+
 
 class TestOriginalHappyFruits(object):
 
@@ -85,7 +86,7 @@ class TestOriginalErrors(object):
     def test_not_a_string_dict(self):
         # throws TypeError
         with pytest.raises(TypeError):
-            assert get_formal_name_original({1:'banana'}) == 'Musa acuminata'
+            assert get_formal_name_original({1: 'banana'}) == 'Musa acuminata'
 
     def test_not_a_string_bool(self):
         # throws KeyError
@@ -105,7 +106,6 @@ class TestOriginalErrors(object):
             assert get_formal_name_original('banana', 'plum') == 'Musa acuminata'
 
 
-
 """
 testable things for get_formal_name_improved
 + string (exact match for key or case variations)
@@ -117,25 +117,26 @@ testable things for get_formal_name_improved
 
 running these tests (from /Users/derek/dev/suny485/suny485):
 >>> pytest tests/hw11 -k TestImprovedHappyFruits -v
-tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_banana PASSED                                     [ 25%]
-tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_peach PASSED                                      [ 50%]
-tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_lemon PASSED                                      [ 75%]
-tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_case_difference PASSED                            [100%]
+tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_banana PASSED                [ 25%]
+tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_peach PASSED                 [ 50%]
+tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_lemon PASSED                 [ 75%]
+tests/hw11/test_hw11.py::TestImprovedHappyFruits::test_case_difference PASSED       [100%]
 
 >>> pytest tests/hw11 -k TestImprovedUnhappyFruits -v
-tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_empty_string PASSED                             [ 25%]
-tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_leading_space PASSED                            [ 50%]
-tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_trailing_space PASSED                           [ 75%]
-tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_non_matching_string PASSED                      [100%]
+tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_empty_string PASSED        [ 25%]
+tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_leading_space PASSED       [ 50%]
+tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_trailing_space PASSED      [ 75%]
+tests/hw11/test_hw11.py::TestImprovedUnhappyFruits::test_non_matching_string PASSED [100%]
 
 >>> pytest tests/hw11 -k TestImprovedErrors -v
-tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_int PASSED                                [ 16%]
-tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_list PASSED                               [ 33%]
-tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_dict PASSED                               [ 50%]
-tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_bool PASSED                               [ 66%]
-tests/hw11/test_hw11.py::TestImprovedErrors::test_no_arg PASSED                                          [ 83%]
-tests/hw11/test_hw11.py::TestImprovedErrors::test_multiple_args PASSED                                   [100%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_int PASSED           [ 16%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_list PASSED          [ 33%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_dict PASSED          [ 50%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_not_a_string_bool PASSED          [ 66%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_no_arg PASSED                     [ 83%]
+tests/hw11/test_hw11.py::TestImprovedErrors::test_multiple_args PASSED              [100%]
 """
+
 
 class TestImprovedHappyFruits(object):
 
@@ -183,7 +184,7 @@ class TestImprovedErrors(object):
 
     def test_not_a_string_dict(self):
         with pytest.raises(KeyError):
-            assert get_formal_name_improved({1:'banana'}) == 'Musa acuminata'
+            assert get_formal_name_improved({1: 'banana'}) == 'Musa acuminata'
 
     def test_not_a_string_bool(self):
         with pytest.raises(KeyError):

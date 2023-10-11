@@ -5,17 +5,18 @@ from suny485.projects.hw12.homework12 import compute_complexity
 
 """
 testable things for projects.hw12.homework12.py::compute_complexity()
-+ string
-    + complexity correctly computed 
-        + without complexifier chars, should be 0.0
-        + with complexifier chars, score depends on proportion of c-chars to length 
-        + all c-chars are the same
-+ other data types
-    + int
-    + list
-    + bool
-    + dict
+    + string
+        + complexity correctly computed
+            + without complexifier chars, should be 0.0
+            + with complexifier chars, score depends on proportion of c-chars to length
+            + all c-chars are the same
+    + other data types
+        + int
+        + list
+        + bool
+        + dict
 """
+
 
 class TestComplexityLogic(object):
 
