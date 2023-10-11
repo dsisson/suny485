@@ -15,20 +15,21 @@ testable things
 
 running these tests (from /Users/derek/dev/suny485/suny485):
 >>> pytest tests/hw10 -k TestHappyFruits -v
-tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_apple PASSED                                        [ 25%]
-tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_pear PASSED                                         [ 50%]
-tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_bannana PASSED                                      [ 75%]
-tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_grape PASSED                                        [100%]
+tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_apple PASSED        [ 25%]
+tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_pear PASSED         [ 50%]
+tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_bannana PASSED      [ 75%]
+tests/hw10/test_hw10.py::TestHappyFruits::test_fruit_grape PASSED        [100%]
 
 >>> pytest tests/hw10 -k TestUnhappyFruits -v
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_snapple PASSED                                    [ 14%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_banana PASSED                                     [ 28%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_Pear PASSED                                       [ 42%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_empty_str PASSED                                        [ 57%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_None PASSED                                             [ 71%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_list PASSED                                             [ 85%]
-tests/hw10/test_hw10.py::TestUnhappyFruits::test_no_arg FAILED                                           [100%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_snapple PASSED    [ 14%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_banana PASSED     [ 28%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_fruit_Pear PASSED       [ 42%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_empty_str PASSED        [ 57%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_None PASSED             [ 71%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_list PASSED             [ 85%]
+tests/hw10/test_hw10.py::TestUnhappyFruits::test_no_arg FAILED           [100%]
 """
+
 
 class TestHappyFruits(object):
     def test_fruit_apple(self):

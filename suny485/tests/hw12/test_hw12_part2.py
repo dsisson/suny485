@@ -4,26 +4,26 @@ from suny485.projects.hw11.homework11 import get_formal_name_original
 from suny485.projects.hw11.homework11 import get_formal_name_improved
 
 good_keys = [
-'apple',
-'banana',
-'orange',
-'strawberry',
-'grape',
-'pineapple',
-'mango',
-'blueberry',
-'peach',
-'watermelon',
-'cherry',
-'pear',
-'plum',
-'raspberry',
-'kiwi',
-'lemon',
-'avocado',
-'pomegranate',
-'cranberry',
-'grapefruit'
+    'apple',
+    'banana',
+    'orange',
+    'strawberry',
+    'grape',
+    'pineapple',
+    'mango',
+    'blueberry',
+    'peach',
+    'watermelon',
+    'cherry',
+    'pear',
+    'plum',
+    'raspberry',
+    'kiwi',
+    'lemon',
+    'avocado',
+    'pomegranate',
+    'cranberry',
+    'grapefruit'
 ]
 
 
@@ -92,10 +92,9 @@ class TestOriginalErrors(object):
         with pytest.raises(KeyError):
             assert get_formal_name_original(original_key_error)
 
-
     @pytest.mark.parametrize('original_type_error', [
         ['banana'],
-        {1:'banana'},
+        {1: 'banana'},
         'no args',
         '2 args',
     ], ids=[
@@ -119,7 +118,7 @@ class TestOriginalErrors(object):
                 assert get_formal_name_original(this_bad_key)
 
 
-### improved app code tests
+# ## improved app code tests
 class TestImprovedHappyFruits(object):
 
     @pytest.mark.parametrize('original_happy', good_keys)
@@ -159,12 +158,11 @@ class TestImprovedErrors(object):
         this_bad_key = original_key_error
 
         with pytest.raises(KeyError):
-            assert get_formal_name_improved(original_key_error)
-
+            assert get_formal_name_improved(this_bad_key)
 
     @pytest.mark.parametrize('original_type_error', [
         ['banana'],
-        {1:'banana'},
+        {1: 'banana'},
         'no args',
         '2 args',
     ], ids=[
@@ -186,4 +184,3 @@ class TestImprovedErrors(object):
                 assert get_formal_name_improved('banana', 'plum')
             else:
                 assert get_formal_name_improved(this_bad_key)
-
