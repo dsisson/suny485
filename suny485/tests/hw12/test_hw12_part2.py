@@ -26,6 +26,30 @@ good_keys = [
     'grapefruit'
 ]
 
+improved_good_keys = [
+    'apple',
+    'APPLE',
+    'banana',
+    'orange',
+    'strawberry',
+    'grape',
+    'pineapple',
+    'mango',
+    'blueberry',
+    'peach',
+    'Peach',
+    'watermelon',
+    'cherry',
+    'pear',
+    'plum',
+    'raspberry',
+    'kiwi',
+    'lemon',
+    'avocado',
+    'pomegranate',
+    'cranberry',
+    'grapefruit'
+]
 
 valid_fruits = {
     'apple': 'Malus domestica',
@@ -86,9 +110,6 @@ class TestOriginalErrors(object):
         True,
     ])
     def test_problem_key_raises_key_error(self, original_key_error):
-        # setup
-        this_bad_key = original_key_error
-
         with pytest.raises(KeyError):
             assert get_formal_name_original(original_key_error)
 
@@ -103,7 +124,7 @@ class TestOriginalErrors(object):
         'no args',
         '2 args',
     ])
-    def test_problem_key_raises_key_error(self, original_type_error):
+    def test_problem_key_raises_type_error(self, original_type_error):
         # setup
         this_bad_key = original_type_error
 
@@ -121,12 +142,12 @@ class TestOriginalErrors(object):
 # ## improved app code tests
 class TestImprovedHappyFruits(object):
 
-    @pytest.mark.parametrize('original_happy', good_keys)
+    @pytest.mark.parametrize('original_happy', improved_good_keys)
     def test_good_key(self, original_happy):
         # setup
         this_key = original_happy
         print(f"--> {this_key}")
-        expected_value = valid_fruits[this_key]
+        expected_value = valid_fruits[this_key.lower()]
         assert get_formal_name_improved(this_key) == expected_value
 
 
@@ -136,7 +157,6 @@ class TestImprovedUnhappyFruits(object):
         '',
         ' banana',
         'banana ',
-        'Peach',
         'foo'
     ])
     def test_bad_key(self, original_unhappy):
@@ -152,6 +172,13 @@ class TestImprovedErrors(object):
     @pytest.mark.parametrize('original_key_error', [
         56,
         True,
+        ['banana'],
+        {1: 'banana'},
+    ], ids=[
+        '56',
+        'True',
+        'list',
+        'dict'
     ])
     def test_problem_key_raises_key_error(self, original_key_error):
         # setup
@@ -161,17 +188,13 @@ class TestImprovedErrors(object):
             assert get_formal_name_improved(this_bad_key)
 
     @pytest.mark.parametrize('original_type_error', [
-        ['banana'],
-        {1: 'banana'},
         'no args',
         '2 args',
     ], ids=[
-        'list',
-        'dict',
         'no args',
         '2 args',
     ])
-    def test_problem_key_raises_key_error(self, original_type_error):
+    def test_problem_key_raises_type_error(self, original_type_error):
         # setup
         this_bad_key = original_type_error
 

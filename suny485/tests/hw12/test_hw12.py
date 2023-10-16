@@ -10,6 +10,7 @@ testable things for projects.hw12.homework12.py::compute_complexity()
             + without complexifier chars, should be 0.0
             + with complexifier chars, score depends on proportion of c-chars to length
             + all c-chars are the same
+        + very long strings
     + other data types
         + int
         + list
@@ -70,6 +71,11 @@ class TestComplexityLogic(object):
         ('$$$$$$$$rd', 80.0),
         ('$$$$$$$$$d', 90.0),
         ('$$$$$$$$$$', 100.0),
+
+        # length
+        ('x' * 100, 0.0),
+        ('x' * 1000, 0.0),
+        ('x' * 10000, 0.0),
     ], ids=[
         'password',
         'pa55word',
@@ -109,6 +115,9 @@ class TestComplexityLogic(object):
         '$$$$$$$$rd',
         '$$$$$$$$$d',
         '$$$$$$$$$$',
+        '100 chars',
+        '1000 chars',
+        '10000 chars',
     ])
     def test_complexity_for_valid_str(self, good_input):
         data, expected_complexity = good_input
@@ -122,9 +131,10 @@ class TestComplexityLogic(object):
         'int',
         'bool',
     ])
-    def test_complexity_for_invalid_arg(self, bad_input):
+    def test_complexity_for_invalid_arg_type_error(self, bad_input):
         data, expected_complexity = bad_input
-        assert compute_complexity(data) == expected_complexity
+        with pytest.raises(TypeError):
+            assert compute_complexity(data) == expected_complexity
 
     @pytest.mark.xfail
     @pytest.mark.parametrize('should_fail', [
