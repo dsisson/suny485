@@ -79,6 +79,11 @@ class TestComplexityLogic(object):
         ('$$$$$$$$rd', 80.0),
         ('$$$$$$$$$d', 90.0),
         ('$$$$$$$$$$', 100.0),
+
+        # length
+        ('x' * 100, 0.0),
+        ('x' * 1000, 0.0),
+        ('x' * 10000, 0.0),
     ], ids=[
         'password',
         'pa55word',
@@ -118,6 +123,9 @@ class TestComplexityLogic(object):
         '$$$$$$$$rd',
         '$$$$$$$$$d',
         '$$$$$$$$$$',
+        '100 chars',
+        '1000 chars',
+        '10000 chars',
     ])
     def test_complexity_for_valid_str(self, good_input):
         data, expected_complexity = good_input
@@ -125,15 +133,15 @@ class TestComplexityLogic(object):
 
     @pytest.mark.parametrize('bad_input', [
         # other data types
-        (42, 0.0),
-        (True, 0.0),
+        42,
+        True,
     ], ids=[
         'int',
         'bool',
     ])
     def test_complexity_for_invalid_arg(self, bad_input):
-        data, expected_complexity = bad_input
-        assert compute_complexity(data) == expected_complexity
+        with pytest.raises(TypeError):
+            compute_complexity(bad_input)
 
     @pytest.mark.xfail
     @pytest.mark.parametrize('should_fail', [
@@ -203,6 +211,11 @@ class TestEvaluateStrength(object):
         ('$$$$$$$$rd', 80.0, True),
         ('$$$$$$$$$d', 90.0, True),
         ('$$$$$$$$$$', 100.0, True),
+
+        # length
+        ('x' * 100, 0.0, False),
+        ('x' * 1000, 0.0, False),
+        ('x' * 10000, 0.0, False),
     ], ids=[
         'password',
         'pa55word',
@@ -242,6 +255,9 @@ class TestEvaluateStrength(object):
         '$$$$$$$$rd',
         '$$$$$$$$$d',
         '$$$$$$$$$$',
+        '100 chars',
+        '1000 chars',
+        '10000 chars',
     ])
     def test_evaluate_strength(self, passwords):
         # disambiguate
