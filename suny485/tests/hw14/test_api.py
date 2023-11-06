@@ -125,6 +125,7 @@ class TestApiThroughCode(object):
             client.get(f"/get_strength?password={password}")
 
 
+@pytest.mark.live_api
 class TestApiThroughHttp(object):
 
     base = 'http://127.0.0.1:5000/get_strength?'
