@@ -1,0 +1,55 @@
+name: Run pytest on PR
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    #env:
+    #  working-directory: /home/runner/work/
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      #with:
+      #  path: /home/runner/work
+      #run: |
+      #  echo ${{ github.workspace }}
+      #  echo $GITHUB_WORKSPACE
+      #  echo "[pwd]: ${PWD}"
+
+    - name: Switch to Current Branch
+      run: |
+        git checkout ${{ env.BRANCH }}
+        echo ${{ github.workspace }}
+        echo $GITHUB_WORKSPACE
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install -U pip
+        pip install -r requirements.txt
+
+    #- name: Set PYTHONPATH
+    #  run: echo "::set-env name=PYTHONPATH::$(pwd)/suny485"
+
+    - name: Adjust Location
+      working-directory: ./suny485
+      #  echo "[cd]: $(cd suny485)"
+      run: |
+        echo "[workspace]: ${{ github.workspace }}"
+        echo "[pwd]: ${PWD}"
+        echo "[LS]: $(ls -al)"
+        echo "[pwd]: ${PWD}"
+        echo "[LS]: $(ls -al)"
+
+    - name: Run pytest
+      working-directory: ./suny485
+      run: |
+        echo "[pwd]: ${PWD}"
+        pytest -m 'not live_api'
+      # working-directory: ${{env.working-directory}}
