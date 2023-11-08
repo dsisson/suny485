@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from suny485.projects.hw15.password_utils import evaluate_strength
+from suny485.projects.hw16.password_utils import evaluate_strength
 
 app = Flask(__name__)
 
@@ -8,6 +8,10 @@ app = Flask(__name__)
 To run this Flask app, at the command line, while in the folder for this homework
 assignment run the following:
 >>> python api.py
+
+This will launch a server on your local host, which will be either
+"http://localhost" or "http://127.0.0.1". The port will be 500. This must
+NOT be the same port that the web app runs on.
 
 This API has two endpoints:
 1. /get_strength, which accepts a GET request with a query string
@@ -114,4 +118,4 @@ def get_password_strength_by_post():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, debug=True)
