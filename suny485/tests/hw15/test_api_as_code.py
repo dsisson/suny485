@@ -1,7 +1,5 @@
 import json
 import pytest
-import requests
-from requests.exceptions import MissingSchema
 
 from suny485.projects.hw15.api import app
 
@@ -132,11 +130,11 @@ class TestApiGetThroughCode(object):
         # a `#` in the query string will be truncated
         # disambiguate
         password = errors_get  # flake8 will say this is bad; ignore that!
-        # assemb;le params
+        # assemble params
         params = {'password': password}
 
-        response = client_get_endpoint.get(f"/get_strength", query_string=params)
-        #print(f"url --> {response.url}")
+        response = client_get_endpoint.get('/get_strength', query_string=params)
+        # print(f"url --> {response.url}")
         data = json.loads(response.data.decode())
 
         assert response.status_code == 200
@@ -158,7 +156,6 @@ class TestApiGetThroughCode(object):
 
         with pytest.raises(ZeroDivisionError):
             client_get_endpoint.get(f"/get_strength?password={password}")
-
 
 
 class TestApiPostThroughCode(object):
@@ -214,7 +211,7 @@ class TestApiPostThroughCode(object):
         # assemble the payload
         data = {'password': password}
 
-        response = client_post_endpoint.post(f"/get_strength", json=data)
+        response = client_post_endpoint.post('/get_strength', json=data)
         data = json.loads(response.data.decode())
 
         assert response.status_code == 200
@@ -235,15 +232,15 @@ class TestApiPostThroughCode(object):
         data = {'password': password}
 
         with pytest.raises(ZeroDivisionError):
-            client_post_endpoint.post(f"/get_strength", json=data)
+            client_post_endpoint.post('/get_strength', json=data)
 
     @pytest.mark.parametrize(
         'type_error_post',
         [
             1,
-            [1,2],
+            [1, 2],
             (1, 2),
-            {1:2}
+            {1: 2}
         ], ids=[
             'int',
             'list',
@@ -259,4 +256,4 @@ class TestApiPostThroughCode(object):
         data = {'password': password}
 
         with pytest.raises(TypeError):
-            client_post_endpoint.post(f"/get_strength", json=data)
+            client_post_endpoint.post('/get_strength', json=data)

@@ -1,0 +1,21 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Complexity Check</title>
+    <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.js"></script>
+</head>
+<body>
+    <h1>Password Complexity Check</h1>
+
+    <form hx-post="/lookup_password" hx-target="#result">
+        <label for="password">Enter a password:</label>
+        <input type="text" id="password" name="password" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+</body>
+</html>

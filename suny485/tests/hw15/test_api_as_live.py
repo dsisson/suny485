@@ -1,9 +1,5 @@
-import json
 import pytest
 import requests
-from requests.exceptions import MissingSchema
-
-from suny485.projects.hw15.api import app
 
 """
 testable things for API GET endpoint live testing
@@ -51,6 +47,7 @@ testable things for API POST endpoint live testing
                 either "good" or "bad"
 
 """
+
 
 class TestApiGetThroughHttp(object):
 
@@ -136,7 +133,6 @@ class TestApiGetThroughHttp(object):
         # make the live request, check that the server accepted it
         res = requests.get(self.base, params=params)
         assert res.status_code == 500
-
 
     @pytest.mark.parametrize(
         'not_schema_errors_get',
@@ -264,9 +260,9 @@ class TestApiPostGetThroughHttp(object):
         'type_error_post',
         [
             1,
-            [1,2],
+            [1, 2],
             (1, 2),
-            {1:2}
+            {1: 2}
         ], ids=[
             'int',
             'list',
@@ -302,4 +298,3 @@ class TestApiPostGetThroughHttp(object):
 
         res = requests.post(f"{self.base}", json=data)
         assert res.status_code == 500
-
