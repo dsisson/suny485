@@ -34,24 +34,32 @@ jobs:
         python -m pip install -U pip
         pip install -r requirements.txt
         python setup.py install
+        echo "[pwd]: ${PWD}"
+        echo "[LS]: $(ls -al)"
         
 
     #- name: Set PYTHONPATH
     #  run: echo "::set-env name=PYTHONPATH::$(pwd)/suny485"
 
     - name: Adjust Location
-      working-directory: ./suny485
+      # working-directory: ./suny485
       #  echo "[cd]: $(cd suny485)"
       run: |
         echo "[workspace]: ${{ github.workspace }}"
         echo "[pwd]: ${PWD}"
         echo "[LS]: $(ls -al)"
         echo "[pwd]: ${PWD}"
+        PWD=$(pwd)
         echo "[LS]: $(ls -al)"
 
     - name: Run pytest
-      working-directory: ./suny485
+      # working-directory: ./suny485
       run: |
         echo "[pwd]: ${PWD}"
+        echo "[LS]: $(ls -al)"
+        export PYTHONPATH=$PWD/suny485
+        echo "[pythonpath]: ${PYTHONPATH}"
+        #echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
+        
         pytest -m 'not live_api'
       # working-directory: ${{env.working-directory}}
