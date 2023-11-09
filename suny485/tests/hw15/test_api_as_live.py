@@ -172,6 +172,7 @@ class TestApiGetThroughHttp(object):
         assert res.status_code == 500
 
 
+@pytest.mark.live_api
 class TestApiPostGetThroughHttp(object):
 
     base = 'http://127.0.0.1:5000/get_strength?'
