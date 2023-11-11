@@ -34,12 +34,22 @@ jobs:
         echo "[workspace]: ${{ github.workspace }}"
         echo "[pwd]: ${PWD}"
         echo "[LS]: $(ls -al)"
+#
+#    - name: Run pytest
+#      # working-directory: ./suny485
+#      run: |
+#        echo "[pwd]: ${PWD}"
+#        export PYTHONPATH=$PWD/suny485
+#        echo "[pythonpath]: ${PYTHONPATH}"
+#        echo "!! run pytest and exclude any live API tests !!"
+#        pytest -m 'not live_api' -v --tb=short
 
-    - name: Run pytest
-      # working-directory: ./suny485
+    - name: Run tests and coverage report
       run: |
         echo "[pwd]: ${PWD}"
         export PYTHONPATH=$PWD/suny485
         echo "[pythonpath]: ${PYTHONPATH}"
         echo "!! run pytest and exclude any live API tests !!"
-        pytest -m 'not live_api' -v --tb=short
+        coverage run -m pytest -m 'not live_api' -v --tb=short
+        echo "!! run coverage report"
+        coverage report -m
