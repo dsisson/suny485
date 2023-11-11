@@ -25,3 +25,4 @@ __pycache__/
 !/suny485/.idea/
 !/suny485/.idea/vcs.xml
 /suny485/.idea/vcs.xml
+/.coverage
