@@ -43,6 +43,6 @@ jobs:
         export PYTHONPATH=$PWD/suny485
         echo "[pythonpath]: ${PYTHONPATH}"
         echo "!! run pytest and exclude any live API tests !!"
-        coverage run -m pytest -m 'not live_api' -v --tb=short
+        coverage run -m pytest -m 'not live_api' --tb=short
         echo "!! run coverage report"
         coverage report -m
